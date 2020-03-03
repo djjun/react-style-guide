@@ -1,2 +1,55 @@
-# react-style-guide
-Estudo para um style guide para meus projetos.
+
+# React Style Guide
+
+Minha abordagem sobre arquitetura de projeto para padronizar nosso Frontend. Todos esses conceitos foram baseados em estudos que fiz "pelas internets".
+
+### Use regular function para criar os componentes
+Tendo como base performance, *less code* e usando *Context Api*, todos os componentes deverão ser escritos no padrão funcional, usando *regular functions*.
+
+    // Não considere
+    class TodoList extends React.Component {
+      // ...
+      render() {
+        return <div>{this.state.hello}</div>;
+      }
+    };
+    
+    // Considere
+    function TodoList() = {
+      // ...
+      return <div>{this.state.hello}</div>;
+    }
+***Por que?*** Você não consegue usar "React Hook" em um "extended component";
+***Por que?*** Usando *regular function* no lugar de uma *arrow function* você ainda tem o `this` dentro do contexto;
+***Por que?*** Os argumentos do tipo objeto não existem dentro de uma *arrow function*;
+
+    // OK
+    const user = {       
+        show(){ 
+            console.log(arguments); 
+        } 
+    }; 
+    user.show(1, 2, 3); 
+    
+    // ReferrenceError
+    const user = {      
+        show_ar : () => { 
+	        console.log(...arguments); 
+	    } 
+    }; 
+    user.show_ar(1, 2, 3);
+
+***Por que?*** As *regular functions* criadas usando declarações ou expressões de função são "construtivas" e "chamáveis";
+
+    // OK
+    let x = function(){ 
+        console.log(arguments); 
+    }; 
+    new x =(1,2,3); 
+    
+    // TypeError
+    let x = ()=> { 
+        console.log(arguments); 
+    }; 
+    new x(1,2,3);
+
