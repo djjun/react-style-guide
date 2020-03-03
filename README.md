@@ -20,7 +20,9 @@ Tendo como base performance, *less code* e usando *Context Api*, todos os compon
       return <div>{this.state.hello}</div>;
     }
 ***Por que?*** Você não consegue usar "React Hook" em um "extended component";
+
 ***Por que?*** Usando *regular function* no lugar de uma *arrow function* você ainda tem o `this` dentro do contexto;
+
 ***Por que?*** Os argumentos do tipo objeto não existem dentro de uma *arrow function*;
 
     // OK
