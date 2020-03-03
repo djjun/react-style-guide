@@ -6,7 +6,7 @@ Minha abordagem sobre arquitetura de projeto para padronizar nosso Frontend. Tod
 ### Use regular function para criar os componentes
 Tendo como base performance, *less code* e usando *Context Api*, todos os componentes deverão ser escritos no padrão funcional, usando *regular functions*.
 
-```jsx
+```js
 // Não considere
 class TodoList extends React.Component {
 	// ...
@@ -21,13 +21,14 @@ function TodoList() = {
 	return <div>{this.state.hello}</div>;
 }
 ```
+
 ***Por que?*** Você não consegue usar "React Hook" em um "extended component";
 
 ***Por que?*** Usando *regular function* no lugar de uma *arrow function* você ainda tem o `this` dentro do contexto;
 
 ***Por que?*** Os argumentos do tipo objeto não existem dentro de uma *arrow function*;
 
-```jsx
+```js
 // OK
 const user = {       
 	show(){ 
@@ -44,9 +45,10 @@ const user = {
 }; 
 user.show_ar(1, 2, 3);
 ```
+
 ***Por que?*** As *regular functions* criadas usando declarações ou expressões de função são "construtivas" e "chamáveis";
 
-```jsx
+```js
 // OK
 let x = function(){ 
 	console.log(arguments); 
@@ -57,5 +59,5 @@ new x =(1,2,3);
 let x = ()=> { 
 	console.log(arguments); 
 }; 
-```
 new x(1,2,3);
+```
