@@ -3,7 +3,39 @@
 
 Minha abordagem sobre arquitetura de projeto para padronizar nosso Frontend. Todos esses conceitos foram baseados em estudos que fiz "pelas internets".
 
+### Nomenclatura
+
+Para uma padronização, utilizaremos PascalCase para componentes e arquivos. Para instâncias usaremos camelCase.
+
+```js
+// Não considere
+import TodoList from './TodoList';
+
+// Considere
+import TodoList from './TodoList';
+
+// Não considere
+const TodoItem = <TodoList />;
+
+// Considere
+const todoItem = <TodoList />;
+```
+
+Para chamar componentes, dentro do seu domínio deverá ser criado um arquivo *index* que instância o módulo.
+
+```js
+// Não considere
+import TodoList from './TodoList/TodoList';
+
+// Não considere
+import TodoList from './TodoList/index';
+
+// Considere
+import TodoList from './TodoList';
+```
+
 ### Use regular function para criar os componentes
+
 Tendo como base performance, *less code* e usando *Context Api*, todos os componentes deverão ser escritos no padrão funcional, usando *regular functions*.
 
 ```js
