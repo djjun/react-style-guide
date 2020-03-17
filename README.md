@@ -9,7 +9,7 @@ Para uma padronização, utilizaremos PascalCase para componentes e arquivos. Pa
 
 ```js
 // Não considere
-import TodoList from './TodoList';
+import todoList from './TodoList';
 
 // Considere
 import TodoList from './TodoList';
